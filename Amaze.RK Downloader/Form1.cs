@@ -24,6 +24,16 @@ namespace Amaze.RK_Downloader
         {
             InitializeComponent();
         }
+        //Set Strings
+        string title = "";
+        string year = "";
+        string imdb = "";
+        string aURL = "";
+        string tvID = "";
+        // string q720p = "";
+        // string q1080p = "";
+        string XMLURL = "";
+        string XMLURL2 = "";
 
         private void Form1_Load(object sender, EventArgs e)
         {
@@ -37,18 +47,103 @@ namespace Amaze.RK_Downloader
 
         private void button1_Click(object sender, EventArgs e)
         {
-            //Set Strings
-            string title = "";
-            string year = "";
-            string imdb = "";
-            string aURL = "";
-            string q720p = "";
-            string q1080p = "";
-            string XMLURL = "";
-            string XMLURL2 = "";
+            
 
+            if (radioButton1.Checked == true)
+            {
+                movie();
+            }
+            else if (radioButton2.Checked == true)
+            {
+                tv();
+            }
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            if (this.Width == 1049)
+            {
+                this.Width = 662;
+                button2.Text = ">";
+            }
+            else
+            {
+                this.Width = 1049;
+                button2.Text = "<";
+            }
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox1_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            
+        }
+
+        private void textBox2_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)Keys.Enter)
+            {
+                button1.PerformClick();
+            }
+        }
+
+        private void textBox3_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)Keys.Enter)
+            {
+                button1.PerformClick();
+            }
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+            System.Diagnostics.Process.Start("http://Amaze.RK/");
+        }
+
+        private void radioButton1_CheckedChanged(object sender, EventArgs e)
+        {
+            if (radioButton1.Checked == true)
+            {
+                label1.Text = "Movie Name:";
+                label2.Text = "Movie Year:";
+                label3.Text = "IMDB ID:";
+                textBox1.Enabled = true;
+                textBox2.Enabled = true;
+                textBox3.Enabled = true;
+                button2.Enabled = true;
+                button1.Text = "Search for Movie";
+            }
+        }
+
+        private void radioButton2_CheckedChanged(object sender, EventArgs e)
+        {
+            if (radioButton2.Checked == true)
+            {
+                label1.Text = "TV Show Name:";
+                label2.Text = "TV Show Year:";
+                label3.Text = "TVDB ID:";
+                label5.Text = "TVDB ID:";
+                label6.Text = "TVRage ID:";
+                textBox1.Enabled = true;
+                textBox2.Enabled = false;
+                textBox3.Enabled = true;
+                button2.Enabled = false;
+                this.Width = 662;
+                button2.Text = ">";
+                button1.Text = "Search for TV Show";
+            }
+        }
+
+
+        public void movie()
+        {
             //Define Strings
-            if (textBox1.Text != "") {
+            if (textBox1.Text != "")
+            {
                 title = textBox1.Text;
                 aURL = "http://omdbapi.com/?t=" + title + "&type=movie&tomatoes=true";
                 XMLURL = "https://yts.to/rss/" + title + "/1080p/0";
@@ -80,7 +175,7 @@ namespace Amaze.RK_Downloader
             {
                 MessageBox.Show("Please enter something...");
             }
-            
+
             WebClient c = new WebClient();
             var data = c.DownloadString(aURL);
             //Console.WriteLine(data);
@@ -149,52 +244,66 @@ namespace Amaze.RK_Downloader
             p.Image = finalImg;
 
             p.Show();
-
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        public void tv()
         {
-            if (this.Width == 1049)
+            if (textBox1.Text != "")
             {
-                this.Width = 662;
-                button2.Text = ">";
+                title = textBox1.Text;
+                aURL = "http://api.tvmaze.com/singlesearch/shows?q=" + title;
+
+                WebClient c = new WebClient();
+                var data = c.DownloadString(aURL);
+
+                JObject l = JObject.Parse(data);
+
+                try
+                {
+                    Title.Text = l["name"].ToString();
+                    Genre.Text = l["genres"][0].ToString();
+
+                    Console.WriteLine("Status:        " + l["status"].ToString());
+
+                    Plot.Text = Regex.Replace(l["summary"].ToString(), "<.*?>", string.Empty);
+
+                    if (l.SelectToken("externals.tvrage") != null)
+                    {
+                        IMDB.Text = l.SelectToken("externals.tvrage").ToString();
+                    }
+                    else { }
+                    if (l.SelectToken("rating.average") != null)
+                    {
+                        Rating.Text = l.SelectToken("externals.thetvdb").ToString();
+                    }
+                    else { }
+                    string poster = l.SelectToken("image.original").ToString();
+                    //Start poster loading
+                    p.Load(poster);
+
+                    //create a new Bitmap with the proper dimensions
+
+                    Bitmap finalImg = new Bitmap(p.Image, p.Width, p.Height);
+
+                    //center the new image
+                    p.SizeMode = PictureBoxSizeMode.CenterImage;
+
+                    //set the new image
+                    p.Image = finalImg;
+
+                    p.Show();
+                }
+                catch
+                {
+                    Console.WriteLine("Sorry. This TV show could not be found!");
+                }
             }
-            else
+            else if (textBox3.Text != "")
             {
-                this.Width = 1049;
-                button2.Text = "<";
+                tvID = textBox3.Text;
+                aURL = "http://api.tvmaze.com/lookup/shows?thetvdb=" + tvID;
             }
-        }
-
-        private void button4_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox1_KeyPress(object sender, KeyPressEventArgs e)
-        {
             
-        }
-
-        private void textBox2_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (e.KeyChar == (char)Keys.Enter)
-            {
-                button1.PerformClick();
-            }
-        }
-
-        private void textBox3_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (e.KeyChar == (char)Keys.Enter)
-            {
-                button1.PerformClick();
-            }
-        }
-
-        private void pictureBox1_Click(object sender, EventArgs e)
-        {
-            System.Diagnostics.Process.Start("http://Amaze.RK/");
         }
 
     }

@@ -96,7 +96,7 @@
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(85, 18);
+            this.textBox1.Location = new System.Drawing.Point(105, 18);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(183, 20);
             this.textBox1.TabIndex = 1;
@@ -104,7 +104,7 @@
             // 
             // textBox2
             // 
-            this.textBox2.Location = new System.Drawing.Point(85, 44);
+            this.textBox2.Location = new System.Drawing.Point(105, 44);
             this.textBox2.Name = "textBox2";
             this.textBox2.Size = new System.Drawing.Size(183, 20);
             this.textBox2.TabIndex = 3;
@@ -139,7 +139,7 @@
             // 
             // textBox3
             // 
-            this.textBox3.Location = new System.Drawing.Point(85, 73);
+            this.textBox3.Location = new System.Drawing.Point(105, 73);
             this.textBox3.Name = "textBox3";
             this.textBox3.Size = new System.Drawing.Size(183, 20);
             this.textBox3.TabIndex = 7;
@@ -165,7 +165,7 @@
             this.groupBox1.Controls.Add(this.textBox2);
             this.groupBox1.Location = new System.Drawing.Point(12, 9);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(280, 128);
+            this.groupBox1.Size = new System.Drawing.Size(294, 128);
             this.groupBox1.TabIndex = 8;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Simple Info";
@@ -496,6 +496,7 @@
             // 
             // button4
             // 
+            this.button4.Enabled = false;
             this.button4.Location = new System.Drawing.Point(186, 291);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(178, 23);
@@ -506,6 +507,7 @@
             // 
             // button3
             // 
+            this.button3.Enabled = false;
             this.button3.Location = new System.Drawing.Point(6, 291);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(178, 23);
@@ -535,6 +537,7 @@
             this.radioButton1.TabStop = true;
             this.radioButton1.Text = "Movie";
             this.radioButton1.UseVisualStyleBackColor = true;
+            this.radioButton1.CheckedChanged += new System.EventHandler(this.radioButton1_CheckedChanged);
             // 
             // radioButton2
             // 
@@ -545,6 +548,7 @@
             this.radioButton2.TabIndex = 25;
             this.radioButton2.Text = "TV";
             this.radioButton2.UseVisualStyleBackColor = true;
+            this.radioButton2.CheckedChanged += new System.EventHandler(this.radioButton2_CheckedChanged);
             // 
             // radioButton3
             // 
