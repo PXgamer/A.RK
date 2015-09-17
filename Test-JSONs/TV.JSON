@@ -1,0 +1,45 @@
+{
+	"id": 95,
+	"url": "http://www.tvmaze.com/shows/95/falling-skies",
+	"name": "Falling Skies",
+	"type": "Scripted",
+	"language": "English",
+	"genres": ["Drama",
+	"Action",
+	"Science-Fiction"],
+	"status": "Ended",
+	"runtime": 60,
+	"premiered": "2011-06-19",
+	"rating": {
+		"average": 7.5
+	},
+	"weight": 24,
+	"network": {
+		"id": 14,
+		"name": "TNT",
+		"country": {
+			"name": "United States",
+			"code": "US",
+			"timezone": "America/New_York"
+		}
+	},
+	"webChannel": null,
+	"externals": {
+		"tvrage": 26205,
+		"thetvdb": 205281
+	},
+	"image": {
+		"medium": "http://tvmazecdn.com/uploads/images/medium_portrait/0/716.jpg",
+		"original": "http://tvmazecdn.com/uploads/images/original_untouched/0/716.jpg"
+	},
+	"summary": "<p>The series tells the story of the aftermath of a global invasion by several races of extraterrestrials that neutralizes the world's power grid and technology, quickly destroys the combined militaries of all the world's countries, and apparently kills over 90% of the human population within a few days.</p>",
+	"updated": 1441029897,
+	"_links": {
+		"self": {
+			"href": "http://api.tvmaze.com/shows/95"
+		},
+		"previousepisode": {
+			"href": "http://api.tvmaze.com/episodes/153183"
+		}
+	}
+}
