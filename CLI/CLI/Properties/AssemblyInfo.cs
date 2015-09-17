@@ -5,12 +5,12 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("CLI")]
+[assembly: AssemblyTitle("A.RK CLI")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("CLI")]
-[assembly: AssemblyCopyright("Copyright ©  2015")]
+[assembly: AssemblyCompany("Prianx Studios")]
+[assembly: AssemblyProduct("A.RK CLI")]
+[assembly: AssemblyCopyright("Copyright Prianx Studios ©  2015")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
