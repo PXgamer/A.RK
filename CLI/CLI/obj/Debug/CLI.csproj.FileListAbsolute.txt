@@ -26,3 +26,6 @@ F:\PortableGit\A.RK\CLI\CLI\bin\Debug\Newtonsoft.Json.dll
 F:\PortableGit\A.RK\CLI\CLI\obj\Debug\CLI.csprojResolveAssemblyReference.cache
 F:\PortableGit\A.RK\CLI\CLI\obj\Debug\A.RK.exe
 F:\PortableGit\A.RK\CLI\CLI\obj\Debug\A.RK.pdb
+C:\Users\Owen\Documents\Visual Studio 2013\Projects\A.RK\CLI\CLI\bin\Debug\A.RK.exe.config
+C:\Users\Owen\Documents\Visual Studio 2013\Projects\A.RK\CLI\CLI\obj\Debug\A.RK.exe
+C:\Users\Owen\Documents\Visual Studio 2013\Projects\A.RK\CLI\CLI\obj\Debug\A.RK.pdb
