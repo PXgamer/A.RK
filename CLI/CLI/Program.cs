@@ -1,11 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Net;
-using System.IO;
-using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System.Text.RegularExpressions;
 
@@ -30,19 +24,19 @@ namespace CLI
 							
 						JObject o = JObject.Parse(data);
 							try {
-								Console.WriteLine("Title:         ") + o["Title"].ToString();
-								Console.WriteLine("Year:          ") + o["Year"].ToString();
+								Console.WriteLine("Title:         " + Regex.Replace(o["Title"].ToString(), @"[Â]", ""));
+                                Console.WriteLine("Year:          " + o["Year"].ToString());
 								Console.WriteLine("---------------");
-								Console.WriteLine("Runtime:       ") + o["Runtime"].ToString();
-								Console.WriteLine("Genre:         ") + o["Genre"].ToString();
-								Console.WriteLine("Age Rating:    ") + o["Rated"].ToString();
+								Console.WriteLine("Runtime:       " + o["Runtime"].ToString());
+								Console.WriteLine("Genre:         " + o["Genre"].ToString());
+								Console.WriteLine("Age Rating:    " + o["Rated"].ToString());
 								Console.WriteLine("---------------");
-								Console.WriteLine("Director:      ") + o["Director"].ToString();
-								Console.WriteLine("Plot:          ") + o["Plot"].ToString();
+								Console.WriteLine("Director:      " + o["Director"].ToString());
+								Console.WriteLine("Plot:          " + o["Plot"].ToString());
 								Console.WriteLine("---------------");
-								Console.WriteLine("IMDB ID:       ") + o["imdbID"].ToString();
-								Console.WriteLine("Metascore:     ") + o["Metascore"].ToString();
-								Console.WriteLine("IMDB Rating:   ") + o["imdbRating"].ToString();
+								Console.WriteLine("IMDB ID:       " + o["imdbID"].ToString());
+								Console.WriteLine("Metascore:     " + o["Metascore"].ToString());
+								Console.WriteLine("IMDB Rating:   " + o["imdbRating"].ToString());
 								
 								//End Film
 								Console.WriteLine("---------------");
@@ -50,7 +44,7 @@ namespace CLI
 								Console.WriteLine("");
 							}
 							catch {
-								Console.WriteLine("Sorry. This film could not be found!";
+								Console.WriteLine("Sorry. This film could not be found!");
 							}
 				   }
 				   else if( args[i].ToLower() == "-tv" ){
@@ -60,26 +54,27 @@ namespace CLI
 						WebClient c = new WebClient();
 						var data = c.DownloadString(url);
 							
-						JObject o = JObject.Parse(data);
+						JObject l = JObject.Parse(data);
 						
 						try {
-							Console.WriteLine("Title:         ") + o["name"].ToString();
-							Console.WriteLine("Premiere Date: ") + o["premiered"].ToString();
+							Console.WriteLine("Title:         " + l["name"].ToString());
+							Console.WriteLine("Premiere Date: " + l["premiered"].ToString());
 							Console.WriteLine("---------------");
-							Console.WriteLine("Genre:         ") + o["genres"].ToString();
-							Console.WriteLine("Status:        ") + o["status"].ToString();
-							Console.WriteLine("Plot:          ") + o["summary"].ToString();
+							Console.WriteLine("Genre:         " + l["genres"][0].ToString());
+							Console.WriteLine("Status:        " + l["status"].ToString());
+                            string plot = Regex.Replace(l["summary"].ToString(), "<.*?>", string.Empty);
+                            Console.WriteLine("Plot:          " + plot);
 							Console.WriteLine("---------------");
-							if (o.SelectToken(rating.average) != null) {
-							Console.WriteLine("Rating:        ") + o.SelectToken(rating.average).ToString();
+							if (l.SelectToken("rating.average") != null) {
+							Console.WriteLine("Rating:        " + l.SelectToken("rating.average").ToString());
 							}
 							else {}
-							if (o.SelectToken(rating.average) != null) {
-							Console.WriteLine("TVRage ID:     ") + o.SelectToken(externals.tvrage).ToString();
+							if (l.SelectToken("rating.average") != null) {
+							Console.WriteLine("TVRage ID:     " + l.SelectToken("externals.tvrage").ToString());
 							}
 							else {}
-							if (o.SelectToken(rating.average) != null) {
-							Console.WriteLine("TVDB ID:       ") + o.SelectToken(externals.thetvdb).ToString();
+							if (l.SelectToken("rating.average") != null) {
+							Console.WriteLine("TVDB ID:       " + l.SelectToken("externals.thetvdb").ToString());
 							}
 							else {}
 							
@@ -89,7 +84,7 @@ namespace CLI
 							Console.WriteLine("");
 						}
 						catch {
-							Console.WriteLine("Sorry. This TV show could not be found!";
+							Console.WriteLine("Sorry. This TV show could not be found!");
 						}
 				   }
 			   }

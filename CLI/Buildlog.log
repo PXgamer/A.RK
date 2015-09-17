@@ -1,0 +1,45 @@
+Build started 17/09/2015 15:18:27.
+__________________________________________________
+Project "E:\PortableGit\A.RK\CLI\CLI.sln" (default targets):
+
+Target ValidateSolutionConfiguration:
+    Building solution configuration "Debug|Any CPU".
+Target Build:
+    __________________________________________________
+    Project "E:\PortableGit\A.RK\CLI\CLI.sln" is building "E:\PortableGit\A.RK\CLI\CLI\CLI.csproj" (default targets):
+
+    Project file contains ToolsVersion="12.0". This toolset may be unknown or missing, in which case you may be able to resolve this by installing the appropriate version of MSBuild, or the build may have been forced to a particular ToolsVersion for policy reasons. Treating the project as if it had ToolsVersion="4.0". For more information, please see http://go.microsoft.com/fwlink/?LinkId=291333.
+    Target GetReferenceAssemblyPaths:
+        C:\Windows\Microsoft.NET\Framework\v4.0.30319\Microsoft.Common.targets(983,5): warning MSB3644: The reference assemblies for framework ".NETFramework,Version=v4.5" were not found. To resolve this, install the SDK or Targeting Pack for this framework version or retarget your application to a version of the framework for which you have the SDK or Targeting Pack installed. Note that assemblies will be resolved from the Global Assembly Cache (GAC) and will be used in place of reference assemblies. Therefore your assembly may not be correctly targeted for the framework you intend.
+    Done building target "GetReferenceAssemblyPaths" in project "CLI.csproj".
+    Target ResolveAssemblyReferences:
+        C:\Windows\Microsoft.NET\Framework\v4.0.30319\Microsoft.Common.targets(1605,5): warning MSB3270: There was a mismatch between the processor architecture of the project being built "MSIL" and the processor architecture of the reference "C:\Windows\Microsoft.NET\Framework\v4.0.30319\mscorlib.dll", "x86". This mismatch may cause runtime failures. Please consider changing the targeted processor architecture of your project through the Configuration Manager so as to align the processor architectures between your project and references, or take a dependency on references with a processor architecture that matches the targeted processor architecture of your project.
+        C:\Windows\Microsoft.NET\Framework\v4.0.30319\Microsoft.Common.targets(1605,5): warning MSB3270: There was a mismatch between the processor architecture of the project being built "MSIL" and the processor architecture of the reference "System.Data", "AMD64". This mismatch may cause runtime failures. Please consider changing the targeted processor architecture of your project through the Configuration Manager so as to align the processor architectures between your project and references, or take a dependency on references with a processor architecture that matches the targeted processor architecture of your project.
+    Done building target "ResolveAssemblyReferences" in project "CLI.csproj".
+    Target GenerateTargetFrameworkMonikerAttribute:
+      Skipping target "GenerateTargetFrameworkMonikerAttribute" because all output files are up-to-date with respect to the input files.
+    Target CoreCompile:
+      Skipping target "CoreCompile" because all output files are up-to-date with respect to the input files.
+    Target _CopyFilesMarkedCopyLocal:
+        Copying file from "C:\Windows\Microsoft.NET\Framework\v4.0.30319\mscorlib.dll" to "bin\Debug\mscorlib.dll".
+        Copying file from "C:\Windows\Microsoft.NET\Framework\v4.0.30319\normidna.nlp" to "bin\Debug\normidna.nlp".
+        Copying file from "C:\Windows\Microsoft.NET\Framework\v4.0.30319\normnfc.nlp" to "bin\Debug\normnfc.nlp".
+        Copying file from "C:\Windows\Microsoft.NET\Framework\v4.0.30319\normnfd.nlp" to "bin\Debug\normnfd.nlp".
+        Copying file from "C:\Windows\Microsoft.NET\Framework\v4.0.30319\normnfkc.nlp" to "bin\Debug\normnfkc.nlp".
+        Copying file from "C:\Windows\Microsoft.NET\Framework\v4.0.30319\normnfkd.nlp" to "bin\Debug\normnfkd.nlp".
+    Target _CopyAppConfigFile:
+      Skipping target "_CopyAppConfigFile" because all output files are up-to-date with respect to the input files.
+    Target CopyFilesToOutputDirectory:
+        CLI -> E:\PortableGit\A.RK\CLI\CLI\bin\Debug\CLI.exe
+
+    Done building project "CLI.csproj".
+
+Build succeeded.
+
+C:\Windows\Microsoft.NET\Framework\v4.0.30319\Microsoft.Common.targets(983,5): warning MSB3644: The reference assemblies for framework ".NETFramework,Version=v4.5" were not found. To resolve this, install the SDK or Targeting Pack for this framework version or retarget your application to a version of the framework for which you have the SDK or Targeting Pack installed. Note that assemblies will be resolved from the Global Assembly Cache (GAC) and will be used in place of reference assemblies. Therefore your assembly may not be correctly targeted for the framework you intend.
+C:\Windows\Microsoft.NET\Framework\v4.0.30319\Microsoft.Common.targets(1605,5): warning MSB3270: There was a mismatch between the processor architecture of the project being built "MSIL" and the processor architecture of the reference "C:\Windows\Microsoft.NET\Framework\v4.0.30319\mscorlib.dll", "x86". This mismatch may cause runtime failures. Please consider changing the targeted processor architecture of your project through the Configuration Manager so as to align the processor architectures between your project and references, or take a dependency on references with a processor architecture that matches the targeted processor architecture of your project.
+C:\Windows\Microsoft.NET\Framework\v4.0.30319\Microsoft.Common.targets(1605,5): warning MSB3270: There was a mismatch between the processor architecture of the project being built "MSIL" and the processor architecture of the reference "System.Data", "AMD64". This mismatch may cause runtime failures. Please consider changing the targeted processor architecture of your project through the Configuration Manager so as to align the processor architectures between your project and references, or take a dependency on references with a processor architecture that matches the targeted processor architecture of your project.
+    3 Warning(s)
+    0 Error(s)
+
+Time Elapsed 00:00:01.77
