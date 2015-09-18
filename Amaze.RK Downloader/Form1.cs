@@ -263,7 +263,6 @@ namespace Amaze.RK_Downloader
                     Title.Text = l["name"].ToString();
                     Genre.Text = l["genres"][0].ToString();
 
-                    Console.WriteLine("Status:        " + l["status"].ToString());
 
                     Plot.Text = Regex.Replace(l["summary"].ToString(), "<.*?>", string.Empty);
 
@@ -302,6 +301,55 @@ namespace Amaze.RK_Downloader
             {
                 tvID = textBox3.Text;
                 aURL = "http://api.tvmaze.com/lookup/shows?thetvdb=" + tvID;
+
+                HttpWebRequest req = (HttpWebRequest)WebRequest.Create(aURL);
+
+                HttpWebResponse myResp = (HttpWebResponse)req.GetResponse();
+                aURL = myResp.ResponseUri.ToString();
+
+                WebClient c = new WebClient();
+                var data = c.DownloadString(aURL);
+
+                JObject l = JObject.Parse(data);
+
+                try
+                {
+                    Title.Text = l["name"].ToString();
+                    Genre.Text = l["genres"][0].ToString();
+
+
+                    Plot.Text = Regex.Replace(l["summary"].ToString(), "<.*?>", string.Empty);
+
+                    if (l.SelectToken("externals.tvrage") != null)
+                    {
+                        IMDB.Text = l.SelectToken("externals.tvrage").ToString();
+                    }
+                    else { }
+                    if (l.SelectToken("rating.average") != null)
+                    {
+                        Rating.Text = l.SelectToken("externals.thetvdb").ToString();
+                    }
+                    else { }
+                    string poster = l.SelectToken("image.original").ToString();
+                    //Start poster loading
+                    p.Load(poster);
+
+                    //create a new Bitmap with the proper dimensions
+
+                    Bitmap finalImg = new Bitmap(p.Image, p.Width, p.Height);
+
+                    //center the new image
+                    p.SizeMode = PictureBoxSizeMode.CenterImage;
+
+                    //set the new image
+                    p.Image = finalImg;
+
+                    p.Show();
+                }
+                catch
+                {
+                    Console.WriteLine("Sorry. This TV show could not be found!");
+                }
             }
             
         }
