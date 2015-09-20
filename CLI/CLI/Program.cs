@@ -12,7 +12,7 @@ namespace CLI
             string url = "";
             string title = "";
             string year = "";
-            if (args == null)
+            if (args.Length == 0)
             {
                 Console.WriteLine("  Usage: A.RK -movie|tv Title *Year*");
                 Console.WriteLine("  Year only applies to Movies");
@@ -107,7 +107,11 @@ namespace CLI
                         Console.WriteLine("  Usage: A.RK -movie|tv Title *Year*");
                         Console.WriteLine("  Year only applies to Movies");
                     }
-
+                    else
+                    {
+                        Console.WriteLine("  Usage: A.RK -movie|tv Title *Year*");
+                        Console.WriteLine("  Year only applies to Movies");
+                    }
 
                 }
 
