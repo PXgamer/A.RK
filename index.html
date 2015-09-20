@@ -6,17 +6,31 @@
 </head>
 
 <style>
-  #main {
-    height: 100%;
-    width: 100%;
+@font-face {
+  font-family: CF;
+  src: url('CF.ttf');
+}
+  .noselect {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    -o-user-select: none;
+    user-select: none;
   }
-  h1 {
-    line-height: 100%;
+  body {
+    background-image: url('splash-bg.jpg');
+    background-size: auto;
+    background-repeat: no-repeat;
+  }
+  #main {
+    height: 300px;
   }
 </style>
 
 <body>
   <div id="main">
-    <h1>Welcome to the ARK</h1>
+    <p align="center" class="noselect" style="font-size: 130px; line-height: 160px; z-align: 1; font-family: CF; color: ffffff;">Welcome to the A.RK</p>
   </div>
 </body>
