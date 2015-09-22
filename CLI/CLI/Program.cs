@@ -14,7 +14,7 @@ namespace CLI
             string year = "";
             if (args.Length == 0)
             {
-                Console.WriteLine("  Usage: A.RK -movie|tv Title *Year*");
+                Console.WriteLine("  Usage: A.RK -movie|tv|game Title *Year*");
                 Console.WriteLine("  Year only applies to Movies");
             }
             else for (int i = 0; i < args.Length; i++)
@@ -31,6 +31,8 @@ namespace CLI
                         JObject o = JObject.Parse(data);
                         try
                         {
+                            Console.Clear();
+                            Console.WriteLine("");
                             Console.WriteLine("Title:         " + Regex.Replace(o["Title"].ToString(), @"[Â]", ""));
                             Console.WriteLine("Year:          " + o["Year"].ToString());
                             Console.WriteLine("---------------");
@@ -67,6 +69,8 @@ namespace CLI
 
                         try
                         {
+                            Console.Clear();
+                            Console.WriteLine("");
                             Console.WriteLine("Title:         " + l["name"].ToString());
                             Console.WriteLine("Premiere Date: " + l["premiered"].ToString());
                             Console.WriteLine("---------------");
@@ -101,15 +105,45 @@ namespace CLI
                             Console.WriteLine("Sorry. This TV show could not be found!");
                         }
                     }
+                    else if (args[i].ToLower() == "-game")
+                    {
+                        title = args[1];
+                        url = "http://www.giantbomb.com/api/search/?api_key=a01f1e8993d3aad94887ac0f137672acb1cf224d&format=json&query=%22" + title + "%22&resources=game";
+
+                        WebClient d = new WebClient();
+                        var data = d.DownloadString(url);
+
+                        JObject l = JObject.Parse(data);
+
+                        try
+                        {
+                            Console.Clear();
+                            Console.WriteLine("");
+                            Console.WriteLine("Title:         " + l.SelectToken("results[0].name").ToString());
+                            Console.WriteLine("Rating:        " + l.SelectToken("results[0].original_game_rating[0].name").ToString());
+                            Console.WriteLine("---------------");
+                            Console.WriteLine("Plot:          " + Regex.Replace(l.SelectToken("results[0].deck").ToString(), "<.*?>", string.Empty));
+                            Console.WriteLine("---------------");
+                            if (l.SelectToken("results[0].id") != null)
+                            {
+                                Console.WriteLine("GB ID:     " + l.SelectToken("results[0].id").ToString());
+                            }
+                            else { }
+
+                            //End Game
+                            Console.WriteLine("---------------");
+                            Console.WriteLine("");
+                            Console.WriteLine("");
+                        }
+                        catch
+                        {
+                            Console.WriteLine("Sorry. This game could not be found!");
+                        }
+                    }
 
                     else if (args[i].ToLower() == "-h")
                     {
-                        Console.WriteLine("  Usage: A.RK -movie|tv Title *Year*");
-                        Console.WriteLine("  Year only applies to Movies");
-                    }
-                    else
-                    {
-                        Console.WriteLine("  Usage: A.RK -movie|tv Title *Year*");
+                        Console.WriteLine("  Usage: A.RK -movie|tv|game Title *Year*");
                         Console.WriteLine("  Year only applies to Movies");
                     }
 
