@@ -168,7 +168,7 @@
             // 
             this.Title.AutoSize = true;
             this.Title.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Title.Location = new System.Drawing.Point(82, 13);
+            this.Title.Location = new System.Drawing.Point(100, 13);
             this.Title.Name = "Title";
             this.Title.Size = new System.Drawing.Size(0, 13);
             this.Title.TabIndex = 9;
@@ -177,7 +177,7 @@
             // 
             this.Rating.AutoSize = true;
             this.Rating.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Rating.Location = new System.Drawing.Point(82, 57);
+            this.Rating.Location = new System.Drawing.Point(100, 57);
             this.Rating.Name = "Rating";
             this.Rating.Size = new System.Drawing.Size(0, 13);
             this.Rating.TabIndex = 11;
@@ -186,7 +186,7 @@
             // 
             this.Genre.AutoSize = true;
             this.Genre.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Genre.Location = new System.Drawing.Point(82, 81);
+            this.Genre.Location = new System.Drawing.Point(100, 81);
             this.Genre.Name = "Genre";
             this.Genre.Size = new System.Drawing.Size(0, 13);
             this.Genre.TabIndex = 12;
@@ -251,7 +251,7 @@
             // 
             this.IMDB.AutoSize = true;
             this.IMDB.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.IMDB.Location = new System.Drawing.Point(82, 35);
+            this.IMDB.Location = new System.Drawing.Point(100, 35);
             this.IMDB.Name = "IMDB";
             this.IMDB.Size = new System.Drawing.Size(0, 13);
             this.IMDB.TabIndex = 18;
@@ -270,6 +270,7 @@
             // 
             this.Plot.BackColor = System.Drawing.SystemColors.Control;
             this.Plot.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.Plot.Enabled = false;
             this.Plot.Location = new System.Drawing.Point(45, 13);
             this.Plot.Name = "Plot";
             this.Plot.ReadOnly = true;
@@ -547,13 +548,13 @@
             // radioButton4
             // 
             this.radioButton4.AutoSize = true;
-            this.radioButton4.Enabled = false;
             this.radioButton4.Location = new System.Drawing.Point(477, 9);
             this.radioButton4.Name = "radioButton4";
             this.radioButton4.Size = new System.Drawing.Size(53, 17);
             this.radioButton4.TabIndex = 27;
             this.radioButton4.Text = "Game";
             this.radioButton4.UseVisualStyleBackColor = true;
+            this.radioButton4.CheckedChanged += new System.EventHandler(this.radioButton4_CheckedChanged);
             // 
             // pictureBox2
             // 

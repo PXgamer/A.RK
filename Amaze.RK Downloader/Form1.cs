@@ -30,6 +30,7 @@ namespace Amaze.RK_Downloader
         string imdb = "";
         string aURL = "";
         string tvID = "";
+        string gbID = "";
         // string q720p = "";
         // string q1080p = "";
         string XMLURL = "";
@@ -56,6 +57,10 @@ namespace Amaze.RK_Downloader
             else if (radioButton2.Checked == true)
             {
                 tv();
+            }
+            else if (radioButton4.Checked == true)
+            {
+                game();
             }
         }
 
@@ -137,6 +142,7 @@ namespace Amaze.RK_Downloader
                 button1.Text = "Search for TV Show";
             }
         }
+
 
 
         public void movie()
@@ -358,6 +364,115 @@ namespace Amaze.RK_Downloader
         {
             About abt = new About();
             abt.Show();
+        }
+
+        private void radioButton4_CheckedChanged(object sender, EventArgs e)
+        {
+            if (radioButton4.Checked == true)
+            {
+                label1.Text = "Game Name:";
+                label2.Text = "Game Year:";
+                label3.Text = "GiantBomb ID:";
+                label5.Text = "GiantBomb ID:";
+                label6.Text = "";
+                label7.Text = "Age Rating:";
+                textBox1.Enabled = true;
+                textBox2.Enabled = false;
+                textBox3.Enabled = true;
+                button2.Enabled = false;
+                this.Width = 662;
+                button2.Text = ">";
+                button1.Text = "Search for Game";
+            }
+        }
+
+        public void game()
+        {
+            if (textBox1.Text != "")
+            {
+                title = textBox1.Text;
+                aURL = "http://www.giantbomb.com/api/search/?api_key=a01f1e8993d3aad94887ac0f137672acb1cf224d&format=json&query=%22" + title + "%22&resources=game";
+
+                WebClient d = new WebClient();
+                var data = d.DownloadString(aURL);
+
+                JObject l = JObject.Parse(data);
+
+                try
+                {
+                    Title.Text = l.SelectToken("results[0].name").ToString();
+                    Genre.Text = l.SelectToken("results[0].original_game_rating[0].name").ToString();
+
+                    Plot.Text = Regex.Replace(l.SelectToken("results[0].deck").ToString(), "<.*?>", string.Empty);
+
+                    if (l.SelectToken("results[0].id") != null)
+                    {
+                        IMDB.Text = l.SelectToken("results[0].id").ToString();
+                    }
+                    else { }
+                    string poster = Regex.Unescape(l.SelectToken("results[0].image.super_url").ToString());
+                    //Start poster loading
+                    p.Load(poster);
+
+                    //create a new Bitmap with the proper dimensions
+
+                    Bitmap finalImg = new Bitmap(p.Image, p.Width, p.Height);
+
+                    //center the new image
+                    p.SizeMode = PictureBoxSizeMode.CenterImage;
+
+                    //set the new image
+                    p.Image = finalImg;
+
+                    p.Show();
+                }
+                catch
+                {
+                    Console.WriteLine("Sorry. This game could not be found!");
+                }
+            }
+            else if (textBox3.Text != "")
+            {
+                gbID = textBox3.Text;
+                aURL = "http://www.giantbomb.com/api/game/3030-" + gbID + "/?api_key=a01f1e8993d3aad94887ac0f137672acb1cf224d&format=json";
+
+                WebClient d = new WebClient();
+                var data = d.DownloadString(aURL);
+
+                JObject l = JObject.Parse(data);
+
+                try
+                {
+                    Title.Text = l.SelectToken("results.name").ToString();
+                    Genre.Text = l.SelectToken("results.original_game_rating[0].name").ToString();
+                    Plot.Text = Regex.Replace(l.SelectToken("results.deck").ToString(), "<.*?>", string.Empty);
+
+                    if (l.SelectToken("results.id") != null)
+                    {
+                        IMDB.Text = l.SelectToken("results.id").ToString();
+                    }
+                    else { }
+                    string poster = Regex.Unescape(l.SelectToken("results.image.super_url").ToString());
+                    //Start poster loading
+                    p.Load(poster);
+
+                    //create a new Bitmap with the proper dimensions
+
+                    Bitmap finalImg = new Bitmap(p.Image, p.Width, p.Height);
+
+                    //center the new image
+                    p.SizeMode = PictureBoxSizeMode.CenterImage;
+
+                    //set the new image
+                    p.Image = finalImg;
+
+                    p.Show();
+                }
+                catch
+                {
+                    Console.WriteLine("Sorry. This game could not be found!");
+                }
+            }
         }
 
     }
