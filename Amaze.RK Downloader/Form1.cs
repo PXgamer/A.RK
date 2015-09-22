@@ -354,5 +354,11 @@ namespace Amaze.RK_Downloader
             
         }
 
+        private void pictureBox2_Click(object sender, EventArgs e)
+        {
+            About abt = new About();
+            abt.Show();
+        }
+
     }
 }
