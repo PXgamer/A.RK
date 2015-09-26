@@ -10,7 +10,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Prianx Studios")]
 [assembly: AssemblyProduct("A.RK CLI")]
-[assembly: AssemblyCopyright("Copyright Prianx Studios ©  2015")]
+[assembly: AssemblyCopyright("Copyright 2015 © Prianx Studios")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
