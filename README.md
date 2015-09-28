@@ -1,6 +1,6 @@
 # A.RK Repo
 
-[![Join the chat at https://gitter.im/PXgamer/A.RK](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/PXgamer/A.RK?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge) [![A.RK Wiki](https://img.shields.io/badge/A.RK-Wiki-red.svg)](https://github.com/PXgamer/A.RK/wiki)
+[![Join the chat at https://gitter.im/PXgamer/A.RK](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/PXgamer/A.RK?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge) [![A.RK Wiki](https://img.shields.io/badge/A.RK-Wiki-red.svg)](https://gitlab.com/PXgamer/A.RK/wikis/home)
 
 ARK (stylised as A.RK [or Amaze.RK]) is a movie site (currently under development).
 
