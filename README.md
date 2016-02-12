@@ -4,6 +4,8 @@
 
 ARK (stylised as A.RK [or Amaze.RK]) is a movie site (currently under development).
 
+A project by Owen Voke. The sole contributor, all software is open source. Soon to be integrated into PXIMG.
+
 I am currently using the OMDB API and the TV Maze API.
 Please see the [Wiki](https://gitlab.com/PXgamer/A.RK/wikis/home) for more information.
 
